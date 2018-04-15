@@ -24,6 +24,7 @@ var request = require('request');
 
 var devKey ="e73af7a07f5347dda1f4779eca3ae604";
 var bearer= "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJleHAiOjE1MjM3ODg3MjYsIm5iZiI6MTUyMzc4NTEyNiwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly9sb2dpbi5taWNyb3NvZnRvbmxpbmUuY29tL2Q1Zjg1NjgyLWY2N2EtNDQ0NC05MzY5LTJjNWVjMWEwZThjZC92Mi4wLyIsInN1YiI6IjQ5MTcyMjgzLWNhOTUtNGYxYy04YmI1LWY3YTI1ZDQ2MDZlYyIsImF1ZCI6IjQwOTU3YjljLTYzYmMtNGFiNC05ZWNiLTY3YjU0M2M4ZTRjYSIsIm5vbmNlIjoiZGVmYXVsdE5vbmNlIiwiaWF0IjoxNTIzNzg1MTI2LCJhdXRoX3RpbWUiOjE1MjM3ODUxMjYsIm9pZCI6IjQ5MTcyMjgzLWNhOTUtNGYxYy04YmI1LWY3YTI1ZDQ2MDZlYyIsIm5hbWUiOiJ0cmF5bm9yczIyIiwiZmFtaWx5X25hbWUiOiJUcmF5bm9yIiwiZ2l2ZW5fbmFtZSI6IlN0ZXBoZW4iLCJlbWFpbHMiOlsidHJheW5vcnMyMkBnbWFpbC5jb20iXSwidGZwIjoiQjJDXzFfQmx1ZUJhbmtTVVNJIn0.Co5IHkzDBrfhvVUDDJBWk3veaAmgWWmlhm1WLYXhW7HLWcB1yS6JVPw10MNR3cG8T-7cLVv7ibDZ63DLZGIpvH0DfzbN_y9KXq_e-UipBDjGeOza3JYpuMwkyggsGcY0Dt1kzaYKQWfqtXq9GcScX5xPqg1MPryYGtDMW9ghU-DD114o0PKe93hpqqO48mrGztY4PCxHZct700vbUdSzYqQVXR-ZYDfWJ4ImZVMEbdEnkMmQ2QbEeRndxn-3iQm94gpBCxuq5H-9IjpCZyG4kLmgTk8sLX3kjvgmq_T8EGEH8dHxV0VF0TT8OfxKP70B8wXCXkEj7f-WirpDCWCXXA" 
+//var bearer= "break";
 var url = "https://bluebank.azure-api.net/api/v0.7/";
 var accountID = "0361d0ec-959f-4ce3-970c-a05a77a2609c";
 var customerID = "49172283-ca95-4f1c-8bb5-f7a25d4606ec";
@@ -50,7 +51,7 @@ var port = process.env.PORT || 8080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/getBalance', function(req, res) {
+router.get('/getAccount', function(req, res) {
 
 var account = req.param('account');
 
@@ -92,6 +93,8 @@ request(options, function (error, response, body) {
   }else{
   	console.log("error: "+error);
   	console.log("-----------------------------------");
+    //as a fail safe it will output a cached request
+    console.log("{ id: 0361d0ec-959f-4ce3-970c-a05a77a2609c, sortCode: 839999, accountNumber: 10002295,  Iban: null, Bban: null, accountType: current, accountFriendlyName: MainAccount, accountBalance: 1119.73, accountCurrency: null }");
   	res.json({ message: "API is currently down, please contact you admin" }); 
   }
 });
