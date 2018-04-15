@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 
 
 
+
 //var devKey="46c1991eef174e06b4adc698802862b0";
 //var bearer="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lcklkIjoiNTg5MGEwNTc5Y2FlY2I4NzEyOTljNGQzIiwicm9sZSI6InVzZXIiLCJwcmltYXJ5U3Vic2NyaWJlcktleSI6IjQ2YzE5OTFlZWYxNzRlMDZiNGFkYzY5ODgwMjg2MmIwIiwiaWF0IjoxNDg2MDQ4ODExfQ.4fDc34_cHvkZ7LbzO0FhgDi7JDjXKNt-ZN_FIkp22YU";
 //var currentAccountId= '5890a0589caecb871299c4d4';
@@ -128,8 +129,8 @@ request(options, function (error, response, body) {
     //console.log("Balance: " + obj.accountBalance);
     console.log("  ");
     console.log("-----------------------------------");
-    res.json({ Address1: obj.address1 , County: obj.county ,postCode: obj.postCode,
-          firstName: obj.givenName, familyName: obj.familyName}); 
+    res.json({ address1: obj.address1 , county: obj.county ,postCode: obj.postCode,
+          givenName: obj.givenName, familyName: obj.familyName}); 
   }else{
     console.log("error: "+error);
     console.log("-----------------------------------");
@@ -253,6 +254,10 @@ app.post('/transferfunds', function(req, res) {
 
     res.send(toAccountNumber + ' ' + paymentAmount + ' ' + paymentReference);
 });
+
+
+
+
 
 // more routes for our API will happen here
 
